@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3つのサイコロ乱数アプリ（シンプル）</title>
+    <style>
+        /* 最低限のCSSで、中央寄せと可読性を確保 */
+        body {
+            font-family: 'Courier New', monospace; /* シンプルなフォント */
+            text-align: center;
+            padding: 50px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        #dice-results {
+            margin: 20px 0;
+            font-size: 2em;
+            font-weight: bold;
+            /* サイコロの目を横に並べる */
+            display: flex; 
+            justify-content: center;
+            gap: 30px; /* 目と目の間隔 */
+        }
+        .dice-display {
+            border: 1px solid #ccc;
+            padding: 10px 20px;
+            background-color: white;
+        }
+        #roll-button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #total-sum {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>シンプル サイコロ3つ振り</h1>
+    
+    <div id="dice-results">
+        <span class="dice-display" id="dice1">0</span>
+        <span class="dice-display" id="dice2">0</span>
+        <span class="dice-display" id="dice3">0</span>
+    </div>
+    
+    <p id="total-sum">合計: 0</p>
+
+    <button id="roll-button">サイコロを振る</button>
+    
+    <script>
+        // HTML要素を取得
+        const rollButton = document.getElementById('roll-button');
+        const dice1Element = document.getElementById('dice1');
+        const dice2Element = document.getElementById('dice2');
+        const dice3Element = document.getElementById('dice3');
+        const totalSumElement = document.getElementById('total-sum');
+
+        /**
+         * 1から6までの乱数を生成する関数
+         * @returns {number} 1から6までの整数
+         */
+        function getRandomDiceRoll() {
+            // Math.floor(Math.random() * 6) + 1 で 1〜6を生成
+            return Math.floor(Math.random() * 6) + 1;
+        }
+
+        /**
+         * サイコロを振り、結果を表示する関数
+         */
+        function rollDice() {
+            // 3つのサイコロを振る
+            const roll1 = getRandomDiceRoll();
+            const roll2 = getRandomDiceRoll();
+            const roll3 = getRandomDiceRoll();
+            
+            // 合計値を計算
+            const totalSum = roll1 + roll2 + roll3;
+            
+            // 結果をHTMLに表示（テキストの更新のみ）
+            dice1Element.textContent = roll1;
+            dice2Element.textContent = roll2;
+            dice3Element.textContent = roll3;
+            totalSumElement.textContent = `合計: ${totalSum}`;
+        }
+
+        // ボタンにクリックイベントリスナーを追加
+        rollButton.addEventListener('click', rollDice);
+
+        // 初期表示
+        rollDice();
+    </script>
+</body>
+</html>
