@@ -1,0 +1,56 @@
+body {
+    font-family: sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    padding-top: 50px;
+}
+
+.dice-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* サイコロ間のスペース */
+    margin-bottom: 40px;
+}
+
+.die {
+    /* サイコロの形 */
+    width: 80px;
+    height: 80px;
+    background-color: #ffffff;
+    border: 1px solid #333;
+    border-radius: 15px; /* 角を少し丸める */
+    
+    /* 文字の配置 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    font-weight: bold;
+    
+    /* ちょっとした立体感 */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.1s ease-out; /* 振るときの回転アニメーション用 */
+}
+
+/* ボタンのスタイル */
+#rollButton {
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 0 #0056b3; /* 押したときの沈み込み用 */
+}
+
+#rollButton:active {
+    box-shadow: 0 1px 0 #0056b3;
+    transform: translateY(3px);
+}
+
+.total {
+    margin-top: 30px;
+    font-size: 24px;
+    font-weight: bold;
+}
